@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar-ma">
+  <head>
+    <meta charset="utf-8">
+    <title>Chose File</title>
+    <link rel="Stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  </head>
+  <body>
+    <div class="container">
+    <form>
+      <div>
+        <label>Chose</label>
+        <input type="text" id="item" autofocus>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit">Chose The File</button>
+    </form>
+  </div>
+    <script>
+      const electron = require('electron');
+      const {ipcRender} = electron;
+
+      const form = document.querySelector('form');
+      form.addEventListener('submit', submitForm);
+
+      function submitForm(e) {
+        e.preventDefault();
+        console.log(ok);
+        const item = document.querySelector('#item').value;
+        ipcRender.send('item:add', item);
+      }
+    </script>
+  </body>
+</html>
